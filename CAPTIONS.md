@@ -1,67 +1,66 @@
-# CAPTIONS
+# Figure Captions — Single-Cell RNA-Seq Analysis
 
-Captions for each screenshot (edit these after viewing the images).
+Each figure corresponds to a major step of the Seurat → Monocle → STRING pipeline.
 
-## img_01.png
-- What this page shows: 
-- Key takeaway: 
+---
 
-## img_02.png
-- What this page shows: 
-- Key takeaway: 
+## step1_before_filter.png
+- Shows: QC metrics before filtering (nFeature_RNA, nCount_RNA, percent.mt)
+- Takeaway: Identified outliers and high mitochondrial content cells.
 
-## img_03.png
-- What this page shows: 
-- Key takeaway: 
+## step1_after_filter.png
+- Shows: QC metrics after filtering.
+- Takeaway: Clean dataset with improved distribution.
 
-## img_04.png
-- What this page shows: 
-- Key takeaway: 
+## feature_scatter_before_filter.png
+- Shows: Correlation between features and counts.
+- Takeaway: Visualized quality variation across cells.
 
-## img_05.png
-- What this page shows: 
-- Key takeaway: 
+## step2_PCA_Scatter_Plot.png
+- Shows: PCA plot after normalization and scaling.
+- Takeaway: Separation of cell subpopulations begins to appear.
 
-## img_06.png
-- What this page shows: 
-- Key takeaway: 
+## step2_PCA_Loadings_Plot.png
+- Shows: PCA loadings per component.
+- Takeaway: Top genes contributing to variance.
 
-## img_07.png
-- What this page shows: 
-- Key takeaway: 
+## step2_elbow_plot.png
+- Shows: Elbow plot for PC selection.
+- Takeaway: Selected top ~15 PCs for clustering.
 
-## img_08.png
-- What this page shows: 
-- Key takeaway: 
+## step3_Umap.png
+- Shows: UMAP projection of all clusters.
+- Takeaway: Distinct spatial segregation of populations.
 
-## img_09.png
-- What this page shows: 
-- Key takeaway: 
+## annotated_umap.png
+- Shows: Annotated UMAP with cell type labels.
+- Takeaway: Assigned biological identity to each cluster.
 
-## img_10.png
-- What this page shows: 
-- Key takeaway: 
+## combine_with_cluster_labels_pseudotime.png
+- Shows: Monocle pseudotime overlay on UMAP.
+- Takeaway: Smooth trajectory progression from immune to proliferative cells.
 
-## img_11.png
-- What this page shows: 
-- Key takeaway: 
+## pseudotime_plots.png
+- Shows: Gene expression trends along pseudotime.
+- Takeaway: Early immune → late proliferative patterns.
 
-## img_12.png
-- What this page shows: 
-- Key takeaway: 
+## 12_tf_factors_pseudotime_analysis.png
+- Shows: Top 12 TFs dynamic along pseudotime.
+- Takeaway: Key regulators driving trajectory transitions.
 
-## img_13.png
-- What this page shows: 
-- Key takeaway: 
+## heatmap.png
+- Shows: Expression heatmap of top cluster markers.
+- Takeaway: Strong gene segregation confirming cluster validity.
 
-## img_14.png
-- What this page shows: 
-- Key takeaway: 
+## ppi_network.png
+- Shows: STRING protein–protein interaction network.
+- Takeaway: FOXA2–E2F8–MYBL2 form a central proliferative hub.
 
-## img_15.png
-- What this page shows: 
-- Key takeaway: 
+## top_5_marker_per_cluster.png
+- Shows: Dot plot for top markers per cluster.
+- Takeaway: Cluster-specific expression patterns.
 
-## img_16.png
-- What this page shows: 
-- Key takeaway: 
+## venn_diagram.png
+- Shows: Overlap between marker sets.
+- Takeaway: Shared vs unique features across clusters.
+
