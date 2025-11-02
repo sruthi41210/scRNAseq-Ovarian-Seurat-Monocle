@@ -59,3 +59,46 @@ This project analyzes an ovarian single-cell RNA-seq dataset to explore **transc
 
 ## 🧠 Repository Structure
 
+scRNAseq-Ovarian-Seurat-Monocle/
+│
+├── assets/
+│ └── images/ # Analysis figures (QC, PCA, UMAP, pseudotime, heatmap, STRING)
+│
+├── code/
+│ ├── step1_qc.R
+│ ├── step2_pca.R
+│ ├── step3_umap.R
+│ ├── step4_markers.R
+│ ├── heatmap.R
+│ ├── rename_and_annotate.R
+│ ├── analysis1_pseudotime.R
+│ ├── garnet_try.R
+│ └── scrna_workflow.R
+│
+├── REPORT.md # Full workflow + hypothesis
+├── CAPTIONS.md # Captions & interpretations for each figure
+├── .gitignore
+└── README.md
+
+
+---
+
+## 🧩 Related Files
+
+- 📘 [`REPORT.md`](REPORT.md) – Extended write-up of the experiment and findings.  
+- 🖼️ [`CAPTIONS.md`](CAPTIONS.md) – Per-figure explanations and insights.  
+- 🧾 R scripts under [`/code`](code/) – End-to-end pipeline implementation.
+
+---
+
+## 🧭 Resume One-Liner
+
+> **Single-Cell RNA-Seq Analysis (Seurat → Monocle → STRING):**  
+> Identified immune-to-proliferative transcriptional transitions in ovarian dataset; performed QC, clustering, pseudotime analysis, and enrichment validation.
+
+---
+
+## 🧷 Citation
+
+If you reference this project in a portfolio or academic submission, please cite as:
+
