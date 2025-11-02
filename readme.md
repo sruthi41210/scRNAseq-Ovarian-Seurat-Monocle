@@ -44,18 +44,81 @@ This project analyzes an ovarian single-cell RNA-seq dataset to explore **transc
 
 ## 📊 Visual Outputs
 
-| Stage | Description | Preview |
-|:--|:--|:--|
-| QC & Filtering | Before and after QC visualizations | ![QC Before](assets/images/step1_before_filter.png) ![QC After](assets/images/step1_after_filter.png) |
-| PCA & Dimensionality | PCA scatter, loadings, and elbow plot | ![PCA Scatter](assets/images/step2_PCA_Scatter_Plot.png) ![Elbow](assets/images/step2_elbow_plot.png) |
-| Clustering | UMAP visualizations | ![UMAP](assets/images/step3_Umap.png) ![Annotated UMAP](assets/images/annotated_umap.png) |
-| Marker Analysis | Top markers and heatmap | ![Top 5 Markers](assets/images/top_5_marker_per_cluster.png) ![Heatmap](assets/images/heatmap.png) |
-| Pseudotime | Monocle trajectory and gene trends | ![Pseudotime](assets/images/pseudotime_plots.png) ![TF Pseudotime](assets/images/12_tf_factors_pseudotime_analysis.png) |
-| Enrichment & Network | PPI and functional overlap | ![PPI](assets/images/ppi_network.png) ![Venn](assets/images/venn_diagram.png) |
+### QC & Filtering
+![QC Before](assets/images/step1_before_filter.png)
+![QC After](assets/images/step1-after_filter.png)
+![Feature Scatter](assets/images/feature_scatter_before_filtering.png)
 
-> Full captions and interpretations available in [`CAPTIONS.md`](CAPTIONS.md)
+### PCA & Dimensionality
+![PCA Scatter](assets/images/step%202%20PCA%20Scatter%20Plot.png)
+![PCA Loadings](assets/images/step2_PCA_Loadings_Plot.png)
+![Elbow Plot](assets/images/step%202%20elbow%20plot.png)
+
+### Clustering & Annotation
+![UMAP](assets/images/step%203%20Umap.png)
+![Annotated UMAP](assets/images/annotated%20umap.png)
+
+### Pseudotime
+![Pseudotime Overlay](assets/images/combine%20with%20cluster%20labels%20pseudotime.png)
+![Pseudotime Trends](assets/images/pseudotime%20plots.png)
+![TF Trends (12)](assets/images/12%20tf%20factors%20pseodotime%20analysis.png)
+
+### Marker/Heatmap/Networks
+![Top 5 Markers](assets/images/top%205%20marker%20per%20clustor.png)
+![Heatmap](assets/images/heatmap.png)
+![PPI Network](assets/images/ppi%20network.png)
+![Venn](assets/images/venn%20diagram.png)
+
+> Full captions and interpretations are in [`CAPTIONS.md`](CAPTIONS.md).
 
 ---
 
 ## 🧠 Repository Structure
+```
+scRNAseq-Ovarian-Seurat-Monocle/
+│
+├─ assets/
+│  └─ images/          # Analysis figures (QC, PCA, UMAP, pseudotime, heatmap, STRING)
+│
+├─ code/
+│  ├─ step1_qc.R
+│  ├─ step2_pca.R
+│  ├─ step3_umap.R
+│  ├─ step4_markers.R
+│  ├─ heatmap.R
+│  ├─ rename_and_annotate.R
+│  ├─ analysis1_pseudotime.R
+│  ├─ garnet_try.R
+│  └─ scrna_workflow.R
+│
+├─ REPORT.md           # Full workflow + hypothesis
+├─ CAPTIONS.md         # Captions & interpretations for each figure
+├─ .gitignore
+└─ README.md
+```
 
+---
+
+## 🧩 Related Files
+
+- 📘 [`REPORT.md`](REPORT.md) – Extended write-up of the experiment and findings.  
+- 🖼️ [`CAPTIONS.md`](CAPTIONS.md) – Per-figure explanations and insights.  
+- 🧾 R scripts under [`/code`](code/) – End-to-end pipeline implementation.
+
+---
+
+## 🧭 Resume One-Liner
+
+> **Single-Cell RNA-Seq Analysis (Seurat → Monocle → STRING):**  
+> Identified immune-to-proliferative transcriptional transitions in ovarian dataset; performed QC, clustering, pseudotime analysis, and enrichment validation.
+
+---
+
+## 🧷 Citation
+
+If you reference this project in a portfolio or academic submission, please cite as:
+
+```
+Sruthi S. (2025). Single-Cell RNA-Seq Analysis of Ovarian Dataset (Seurat → Monocle → STRING).  
+GitHub: https://github.com/sruthi41210/scRNAseq-Ovarian-Seurat-Monocle
+```
