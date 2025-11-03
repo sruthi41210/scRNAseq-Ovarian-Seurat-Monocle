@@ -116,7 +116,7 @@ scRNAseq-Ovarian-Seurat-Monocle/
 
 ##  Citation
 
-If you reference this project in a portfolio or academic submission, please cite as:
+If you reference this project in a portfolio or academic submission, please cite.
 
 ```
 Sruthi S. (2025). Single-Cell RNA-Seq Analysis of Ovarian Dataset (Seurat → Monocle → STRING).  
