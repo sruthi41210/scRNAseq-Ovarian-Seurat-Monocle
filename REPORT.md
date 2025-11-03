@@ -2,13 +2,15 @@
 
 ## Overview
 
-This report presents a comprehensive single-cell RNA-sequencing (scRNA-seq) analysis of ovarian cancer using the publicly available dataset **GSE244574** from Zhang et al. (2022). The goal of this study was to investigate the transcriptional heterogeneity within the tumor microenvironment, focusing on transcription factor (TF)-driven transitions from immune-active to proliferative tumor states. The analysis integrates Seurat-based clustering, transcription factor identification through Venny and STRING-db, functional enrichment via ShinyGO, and pseudotime trajectory modeling with Monocle3.
+This report presents a comprehensive single-cell RNA-sequencing (scRNA-seq) analysis of ovarian cancer using the publicly available dataset from **Zhang Q. et al. (2022)**, published in *Science Advances* (DOI: 10.1126/sciadv.abm1831) and hosted on **CNGBdb (China National GeneBank Database)**.  
+The objective was to explore transcription factor–driven transitions within the ovarian tumor microenvironment, revealing immune-to-proliferative cell-state changes through Seurat-based clustering, pseudotime analysis (Monocle3), and enrichment/network validation.
+
 
 ---
 
 ## 1. Dataset and Tools
 
-- **Dataset:** GSE244574 (Zhang et al., *Science Advances*, 2022)
+- **Dataset:** Zhang Q. et al., 2022 (Science Advances, CNGBdb)
 - **Objective:** To identify transcriptional regulators controlling immune-to-tumor transitions in ovarian cancer.
 - **Tools Used:** R (Seurat, Monocle3), STRING-db, ShinyGO, ggplot2, Venny
 - **Data Type:** Single-cell RNA-seq (scRNA-seq) expression matrix from ovarian tumor tissue samples.
@@ -130,7 +132,9 @@ This model supports a sequential transcriptional shift underlying tumor evolutio
 
 ---
 
+
 ## Reference
 
-Zhang, Q., et al. (2022). *Landscape and dynamics of single immune cells in ovarian cancer.* Science Advances, 8(9), eabm1831.  
-DOI: [10.1126/sciadv.abm1831](https://www.science.org/doi/10.1126/sciadv.abm1831)
+Zhang, Q., et al. (2022). “Landscape and dynamics of single immune cells in ovarian cancer.” *Science Advances*, 8(9), eabm1831.  
+DOI: 10.1126/sciadv.abm1831  
+Dataset source: CNGBdb (China National GeneBank Database)

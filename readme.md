@@ -8,7 +8,11 @@
 
 ##  Project Overview
 
-This project analyzes an ovarian single-cell RNA-seq dataset to explore **transcriptional transitions** from immune to proliferative cell states using Seurat and Monocle.
+This project reproduces and extends the findings from **Zhang Q. et al. (2022)**, *Science Advances*, “Landscape and dynamics of single immune cells in ovarian cancer.”  
+The dataset was obtained from **CNGBdb (China National GeneBank Database)** and represents **single-cell RNA-seq (scRNA-seq)** profiles from ovarian tumor microenvironments.  
+The analysis focuses on **transcription factor–driven transitions** from immune-active to proliferative cell states using **Seurat → Monocle → STRING → ShinyGO**.
+
+**Dataset Citation:** Zhang Q. et al., 2022 — Ovarian tumor single-cell RNA-seq dataset (Science Advances, DOI: 10.1126/sciadv.abm1831; Source: CNGBdb).
 
 **Pipeline Summary**
 1. **Quality Control (QC)** – Filtering low-quality cells by mitochondrial %, feature count, and outliers.  
