@@ -6,7 +6,7 @@
 
 ---
 
-## 🧬 Project Overview
+##  Project Overview
 
 This project analyzes an ovarian single-cell RNA-seq dataset to explore **transcriptional transitions** from immune to proliferative cell states using Seurat and Monocle.
 
@@ -21,7 +21,7 @@ This project analyzes an ovarian single-cell RNA-seq dataset to explore **transc
 
 ---
 
-## 🧪 Key Results
+##  Key Results
 
 - **Immune → Proliferative Transition:**  
   Early pseudotime regions enriched for immune-related TFs (e.g., *BATF*, *XCL1*, *CCL5*), later regions showed proliferative TFs (*E2F8*, *FOXA2*, *MYBL2*).  
@@ -35,14 +35,14 @@ This project analyzes an ovarian single-cell RNA-seq dataset to explore **transc
 
 ---
 
-## 🎓 Hypothesis
+##  Hypothesis
 
 > Ovarian single-cell transcriptomes show a **sequential transcriptional reprogramming** from immune-primed to proliferative states.  
 > This shift likely represents tumor progression from immune activation toward sustained proliferation, consistent with the enriched cytokine-to-cell-cycle axis.
 
 ---
 
-## 📊 Visual Outputs
+##  Visual Outputs
 
 ### QC & Filtering
 ![QC Before](assets/images/step1_before_filter.png)
@@ -59,8 +59,8 @@ This project analyzes an ovarian single-cell RNA-seq dataset to explore **transc
 ![Annotated UMAP](assets/images/annotated%20umap.png)
 
 ### Pseudotime
-![Pseudotime Overlay](assets/images/combine%20with%20cluster%20labels%20pseudotime.png)
-![Pseudotime Trends](assets/images/pseudotime%20plots.png)
+![Pseudotime Overlay](assets\images\combine%20with%20cluster%20labels%20pseodotime.png)
+![Pseudotime Trends](assets/images/pseodotime%20plots.png)
 ![TF Trends (12)](assets/images/12%20tf%20factors%20pseodotime%20analysis.png)
 
 ### Marker/Heatmap/Networks
@@ -73,7 +73,7 @@ This project analyzes an ovarian single-cell RNA-seq dataset to explore **transc
 
 ---
 
-## 🧠 Repository Structure
+##  Repository Structure
 ```
 scRNAseq-Ovarian-Seurat-Monocle/
 │
@@ -99,22 +99,22 @@ scRNAseq-Ovarian-Seurat-Monocle/
 
 ---
 
-## 🧩 Related Files
+##  Related Files
 
-- 📘 [`REPORT.md`](REPORT.md) – Extended write-up of the experiment and findings.  
-- 🖼️ [`CAPTIONS.md`](CAPTIONS.md) – Per-figure explanations and insights.  
-- 🧾 R scripts under [`/code`](code/) – End-to-end pipeline implementation.
+-  [`REPORT.md`](REPORT.md) – Extended write-up of the experiment and findings.  
+-  [`CAPTIONS.md`](CAPTIONS.md) – Per-figure explanations and insights.  
+-  R scripts under [`/code`](code/) – End-to-end pipeline implementation.
 
 ---
 
-## 🧭 Resume One-Liner
+## one-line summary
 
 > **Single-Cell RNA-Seq Analysis (Seurat → Monocle → STRING):**  
 > Identified immune-to-proliferative transcriptional transitions in ovarian dataset; performed QC, clustering, pseudotime analysis, and enrichment validation.
 
 ---
 
-## 🧷 Citation
+##  Citation
 
 If you reference this project in a portfolio or academic submission, please cite as:
 

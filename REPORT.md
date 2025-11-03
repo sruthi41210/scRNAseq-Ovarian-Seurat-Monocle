@@ -1,77 +1,136 @@
-# Single-Cell RNA-Seq Analysis of Ovarian Dataset (Seurat → Monocle → STRING)
+# Ovarian Cancer Single-Cell RNA-Seq Analysis — Zhang et al. (2022)
 
-## Introduction
+## Overview
 
-This study investigates transcriptional heterogeneity in an ovarian single-cell RNA-seq dataset.  
-The goal is to characterize **immune-to-proliferative transcriptional transitions** using Seurat (for clustering) and Monocle (for pseudotime analysis).
-
----
-
-## Methodology
-
-1. **Preprocessing & Quality Control (QC)**
-   - Removed low-quality cells based on mitochondrial content and total detected features.
-   - Ensured consistent nFeature_RNA and nCount_RNA distributions after filtering.
-
-2. **Normalization, HVG Selection, PCA**
-   - Normalized data and identified ~2,000 HVGs.
-   - Performed PCA to capture major axes of variance.
-
-3. **Elbow Plot & PCA Loadings**
-   - Determined top 15 PCs for clustering.
-   - Identified key variance-driving genes through PCA loadings.
-
-4. **Clustering & UMAP Visualization**
-   - Constructed nearest-neighbor graphs using first 15 PCs.
-   - Used UMAP to visualize distinct clusters and identify biologically relevant groups.
-
-5. **Marker Gene Identification**
-   - Used `FindAllMarkers()` to find cluster-specific genes.
-   - Visualized expression with dot plots and heatmaps.
-
-6. **Pseudotime Trajectory Analysis (Monocle 3)**
-   - Converted Seurat object into a Monocle `CellDataSet`.
-   - Ordered cells along pseudotime to infer progression patterns.
-   - Visualized 12 key transcription factors along pseudotime.
-
-7. **Functional Enrichment & Network Analysis**
-   - Conducted GO/KEGG enrichment of key gene sets.
-   - Used STRING to identify hub interactions among TFs.
+This report presents a comprehensive single-cell RNA-sequencing (scRNA-seq) analysis of ovarian cancer using the publicly available dataset **GSE244574** from Zhang et al. (2022). The goal of this study was to investigate the transcriptional heterogeneity within the tumor microenvironment, focusing on transcription factor (TF)-driven transitions from immune-active to proliferative tumor states. The analysis integrates Seurat-based clustering, transcription factor identification through Venny and STRING-db, functional enrichment via ShinyGO, and pseudotime trajectory modeling with Monocle3.
 
 ---
 
-## Graph Explanations
+## 1. Dataset and Tools
 
-- **QC Plots:** Visualize improvements in mitochondrial % and gene distribution after filtering.
-- **PCA/Elbow:** Highlights main components driving cell variance and supports clustering depth.
-- **UMAP:** Displays distinct immune, stromal, and epithelial clusters.
-- **Pseudotime:** Orders cells along differentiation; early immune → late proliferative transitions observed.
-- **TF Trends:** 12 TFs show phase-wise regulation consistent with pseudotime trajectory.
-- **Heatmap & Marker Plots:** Validate the identity and distinct expression modules of each cluster.
-- **STRING Network:** FOXA2–E2F8–MYBL2 hub reinforces proliferative cluster role.
-- **Venn Diagram:** Shows overlap and exclusivity among gene sets.
+- **Dataset:** GSE244574 (Zhang et al., *Science Advances*, 2022)
+- **Objective:** To identify transcriptional regulators controlling immune-to-tumor transitions in ovarian cancer.
+- **Tools Used:** R (Seurat, Monocle3), STRING-db, ShinyGO, ggplot2, Venny
+- **Data Type:** Single-cell RNA-seq (scRNA-seq) expression matrix from ovarian tumor tissue samples.
 
 ---
 
-## Results Summary
+## 2. Clustering and Annotation (Seurat)
 
-- **Immune Activation (Early pseudotime):** High *BATF*, *XCL1*, *CCL5* expression — cytokine and inflammation pathways.  
-- **Proliferation (Late pseudotime):** High *E2F8*, *MYBL2*, *FOXA2* expression — cell-cycle and hypoxia pathways.  
-- **Network Integration:** FOXA2–E2F8–MYBL2 hub connects transcriptional drivers of proliferation.  
-- **GO/KEGG Enrichment:** Cytokine and immune terms early; cell-cycle, DNA replication, and hypoxia terms later.
+Dimensionality reduction was performed using PCA and UMAP, followed by graph-based clustering. The top marker genes per cluster were identified using `FindAllMarkers()` and used for biological annotation.
 
----
+**Cell Types Identified:**
+- **Immune:** T cells (CD3G, GIMAP7), NK cells (XCL1, GNLY), macrophages (C1QA, TREM2), dendritic cells (FLT3)
+- **Tumor:** Tumor epithelial (PAX2, FOXA2), proliferative/hypoxic tumor (MKI67, AURKB, E2F8)
+- **Stromal:** CAFs (MMP11, POSTN), fibroblasts (OSR1), mesothelial cells (CALML5)
+- **Others:** B cells, plasma cells, mast cells, club/secretory epithelial
 
-## Final Hypothesis
-
-> The ovarian single-cell transcriptome follows a **continuous immune-to-proliferative trajectory**.  
-> Cells begin with cytokine and immune response activation, later transitioning into proliferative, hypoxia-driven states.  
-> This progression mirrors tumor adaptation and potential therapy resistance, driven by transcription factors *FOXA2*, *E2F8*, and *MYBL2*.
+**Inference:** The UMAP projection demonstrated clear separation between immune and tumor compartments, confirming robust clustering and distinct subpopulation identity.
 
 ---
 
-## Future Work
+## 3. Top Marker Gene Extraction and Visualization
 
-- Integrate ligand–receptor communication networks (e.g., *CellChat*).  
-- Cross-validate trajectory modules across multiple ovarian datasets.  
-- Extend pseudotime modeling to drug-response predictions.
+The top 10 differentially expressed genes (DEGs) per cluster were extracted based on average log2 fold-change values. Heatmaps and dot plots were used to visualize cluster-specific gene expression patterns.
+
+**Key Observations:**
+- Immune clusters expressed *BATF*, *XCL1*, and *CD3G*.
+- Tumor clusters were characterized by *FOXA2*, *MKI67*, and *MYBL2*.
+- Stromal clusters expressed *OSR1* and *POSTN*, indicating matrix remodeling roles.
+
+These patterns confirmed the biological validity of the cluster assignments and aligned with the Zhang et al. (2022) annotations.
+
+---
+
+## 4. Transcription Factor Filtering and Network Analysis
+
+To identify key regulatory factors, a curated human TF list was cross-referenced with the DEGs using **Venny**.
+
+**12 transcription factors (TFs)** were identified:
+```
+BATF, XCL1, OSR1, PLA2G10, EME1, PAX2, FOXA2, LTF, HLA-DQB2, E2F8, MYBL2, HIST1H1B
+```
+
+**Functional Grouping:**
+- **Immune-related TFs:** BATF, XCL1, HLA-DQB2
+- **Proliferative TFs:** E2F8, MYBL2, FOXA2, HIST1H1B
+- **Stromal/Other TFs:** OSR1, PAX2, LTF, PLA2G10, EME1
+
+STRING-db network analysis revealed two major hubs:
+1. **Immune Hub:** BATF and HLA-DQB2 connected to immune activation and T-cell signaling.
+2. **Proliferation Hub:** E2F8 and MYBL2 central to cell-cycle regulation and replication stress.
+
+An additional link was observed between **PLA2G10** (inflammatory signaling) and the proliferative module, suggesting crosstalk between inflammation and tumor proliferation.
+
+---
+
+## 5. Gene Ontology and Pathway Enrichment (ShinyGO)
+
+Functional enrichment analysis was performed using **ShinyGO** on the 12 TFs and their co-expressed genes.
+
+**Top GO Biological Processes:**
+- Leukocyte migration and immune activation
+- Cytokine-mediated signaling pathway
+- Regulation of cell proliferation and apoptosis
+
+**Top KEGG Pathways:**
+- IL-17 signaling pathway
+- Cytokine-cytokine receptor interaction
+- PD-L1 expression and PD-1 checkpoint pathway
+- Graft-versus-host disease (GvHD)
+
+**Interpretation:** The enrichment of immune activation and checkpoint pathways suggests an early hyperactive immune state followed by an immune exhaustion phase. The GvHD-like signature reflects immune overstimulation commonly seen in chronic tumor inflammation.
+
+---
+
+## 6. Pseudotime Trajectory Analysis (Monocle3)
+
+Monocle3 was used to order cells along a pseudotime trajectory beginning from T cell clusters. Expression patterns of the 12 transcription factors were plotted across pseudotime to model temporal transcriptional dynamics.
+
+**Key Results:**
+- **Early pseudotime TFs:** BATF, XCL1 — enriched in T and NK cells, promoting cytokine signaling and immune activation.
+- **Intermediate TFs:** FOXA2 — associated with epithelial transition and potential epithelial-mesenchymal transition (EMT).
+- **Late pseudotime TFs:** E2F8, MYBL2 — enriched in proliferative tumor clusters, driving cell-cycle progression and hypoxia adaptation.
+
+**Inference:** The trajectory highlights a clear immune → proliferative shift. Early immune-regulatory TFs diminish as proliferative and survival TFs dominate, suggesting transcriptional reprogramming underlying tumor progression.
+
+---
+
+## 7. Comparison with Literature
+
+The Zhang et al. (2022) study characterized immune and stromal diversity but did not explicitly quantify transcriptional dynamics over pseudotime. The present analysis extends their findings by uncovering **temporal regulation of transcription factors** that align with functional transitions from immune engagement to tumor proliferation.
+
+**Key Literature Correlations:**
+- *BATF* regulates CD8+ T cell activation (PMID: 31036946)
+- *MYBL2* correlates with poor prognosis in ovarian cancer (PMID: 29211714)
+- *FOXA2* controls epithelial plasticity and tumor progression (PMID: 25979562)
+
+This study integrates and expands these findings into a coherent pseudotemporal model of transcriptional reprogramming.
+
+---
+
+## 8. Hypothesis and Conclusion
+
+> Ovarian tumors exhibit a pseudotemporal transition from immune-active to proliferative and hypoxic states, regulated by a stage-specific transcription factor network. Early TFs (BATF, XCL1) mediate immune activation, while later TFs (FOXA2, E2F8, MYBL2) promote proliferation and immune suppression.
+
+This model supports a sequential transcriptional shift underlying tumor evolution. The immune overactivation observed early in pseudotime may drive chronic inflammation, eventually leading to immune exhaustion and tumor immune escape.
+
+**Therapeutic Implications:**
+- Targeting early immune TFs could enhance anti-tumor responses.
+- Inhibiting late proliferative TFs could prevent tumor expansion and resistance.
+
+---
+
+## 9. Future Directions
+
+- Validate TF expression dynamics experimentally using CRISPR or RNA interference in ovarian tumor lines.
+- Perform SCENIC or regulon-based TF activity analysis to refine transcriptional regulation networks.
+- Integrate spatial transcriptomics or proteomic data to confirm localization of pseudotime states.
+- Extend the analysis to other cancers (e.g., breast, endometrial) to evaluate the generality of the immune-to-proliferative transition model.
+
+---
+
+## Reference
+
+Zhang, Q., et al. (2022). *Landscape and dynamics of single immune cells in ovarian cancer.* Science Advances, 8(9), eabm1831.  
+DOI: [10.1126/sciadv.abm1831](https://www.science.org/doi/10.1126/sciadv.abm1831)
