@@ -3,7 +3,7 @@
 Dataset Source: Zhang Q. et al., 2022 — Ovarian cancer single-cell RNA-seq (CNGBdb, Science Advances, DOI: 10.1126/sciadv.abm1831)
 
 > Short, scannable captions for each figure in the analysis.  
-> You can edit the "Takeaway" lines to match your handwritten submission exactly.
+
 
 ---
 
